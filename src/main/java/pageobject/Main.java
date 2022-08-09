@@ -1,4 +1,4 @@
-package Page_Object;
+package pageobject;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -8,63 +8,63 @@ import org.openqa.selenium.WebDriver;
 public class Main {
     private WebDriver driver;
     //локатор кнопки куки
-    private By buttonCookie = By.id("rcc-confirm-button");
+    protected By buttonCookie = By.id("rcc-confirm-button");
     //локатор для кнопки "Заказать" вверху страницы
-    private By buttonOrder = By.xpath(".//button[@class='Button_Button__ra12g']");
+    protected By buttonOrder = By.xpath(".//button[@class='Button_Button__ra12g']");
 
     // локатор для кнопки заказать внизу страницы
-    private By buttonOrder3 = By.xpath(".//button[@class='Button_Button__ra12g Button_Middle__1CSJM']");
+    protected By buttonOrderBellowPage = By.xpath(".//button[@class='Button_Button__ra12g Button_Middle__1CSJM']");
 
     // локатор для поля "Имя"
-    private By name = By.xpath("//input[@placeholder='* Имя']");
+    protected By name = By.xpath("//input[@placeholder='* Имя']");
     //локатор для поля "Фамилия"
-    private By surname = By.xpath("//input[@placeholder='* Фамилия']");
+    protected By surname = By.xpath("//input[@placeholder='* Фамилия']");
     //локатор для поля "Адрес"
-    private By address =By.xpath("//input[@placeholder='* Адрес: куда привезти заказ']");
+    protected By address =By.xpath("//input[@placeholder='* Адрес: куда привезти заказ']");
     //локатор для поля "Станция метро"
-    private By metro =By.xpath("//input[@placeholder='* Станция метро']");
+    protected By metro =By.xpath("//input[@placeholder='* Станция метро']");
 
     //локатор для выбора станции
-    private By metroboulevard = (By.xpath("//*[@class='select-search__select']//*[text() = 'Бульвар Рокоссовского']"));
+    protected By metroboulevard = (By.xpath("//*[@class='select-search__select']//*[text() = 'Бульвар Рокоссовского']"));
     //локатор для поля "Телефон"
-    private By phone = By.xpath("//input[@placeholder='* Телефон: на него позвонит курьер']");
+    protected By phone = By.xpath("//input[@placeholder='* Телефон: на него позвонит курьер']");
     //локатор для кнопки "Далее"
-    private By buttonThen = By.xpath(".//button[@class='Button_Button__ra12g Button_Middle__1CSJM']");
+    protected By buttonThen = By.xpath(".//button[@class='Button_Button__ra12g Button_Middle__1CSJM']");
 
     //локатор для поля Когда привезти самокат
-    private By date =(By.xpath("//input[@placeholder='* Когда привезти самокат']"));
+    protected By date =(By.xpath("//input[@placeholder='* Когда привезти самокат']"));
 
     //локатор для поля Про аренду
-    private By blanckpole =(By.xpath("//*[text() = 'Про аренду']"));
+    protected By blanckpole =(By.xpath("//*[text() = 'Про аренду']"));
 
     //локатор для поля Срок аренды
-    private By rentalperiod = (By.xpath("//*[@class='Dropdown-control']"));
+    protected By rentalperiod = (By.xpath("//*[@class='Dropdown-control']"));
 
 
-    private By day = (By.xpath("//*[text() = 'сутки']"));
+    protected By day = (By.xpath("//*[text() = 'сутки']"));
 
     //локатор для поля Цвет Самоката
-    private By scootercolor = (By.id("black"));
+    protected By scootercolor = (By.id("black"));
 
 
     //локатор для поля Комментарий
-    private By comment = (By.xpath("//input[@placeholder='Комментарий для курьера']"));
+    protected By comment = (By.xpath("//input[@placeholder='Комментарий для курьера']"));
 
     //локатор для кнопки заказать
-    private By buttonOrder2 = (By.xpath("//button[@class='Button_Button__ra12g Button_Middle__1CSJM']"));
+    protected By buttonOrderFormAboutRent = (By.xpath("//button[@class='Button_Button__ra12g Button_Middle__1CSJM']"));
 
     //Локатор для кнопки да
-    private By buttonyes = (By.xpath("//*[text() = 'Да']"));
+    protected By buttonyes = (By.xpath("//*[text() = 'Да']"));
 
 
     // локатор для кнопки "Статус заказа//
-    private By buttonOrderStatus = (By.xpath("//button[@class='Header_Link__1TAG7']"));
+    protected By buttonOrderStatus = (By.xpath("//button[@class='Header_Link__1TAG7']"));
 
     //локатор для поля ввода номера заказа
-    private By orderNumber = (By.xpath("//input[@class='Input_Input__1iN_Z Header_Input__xIoUq']"));
+    protected By orderNumber = (By.xpath("//input[@class='Input_Input__1iN_Z Header_Input__xIoUq']"));
 
     // локатор для кнопки "GO"
-    private By buttonGO = By.xpath(".//button[@class='Button_Button__ra12g Header_Button__28dPO']");
+    protected By buttonGO = By.xpath(".//button[@class='Button_Button__ra12g Header_Button__28dPO']");
 
     public Main(WebDriver driver) {
         this.driver = driver;
@@ -79,8 +79,8 @@ public class Main {
         driver.findElement(buttonOrder).click();
     }
 
-    public  void setButtonOrder3(){
-        driver.findElement(buttonOrder3).click();
+    public  void setButtonOrderBellowPage(){
+        driver.findElement( buttonOrderBellowPage).click();
     }
 
     public  void setName(String nameEnter){
@@ -131,8 +131,8 @@ public class Main {
     public void setComment(String commentEnter){
         driver.findElement(comment).sendKeys(commentEnter);
     }
-    public void setButtonOrder2(){
-        driver.findElement(buttonOrder2).click();
+    public void setButtonOrderFormAboutRent(){
+        driver.findElement(buttonOrderFormAboutRent).click();
     }
 
     public void setButtonyes(){
@@ -153,9 +153,7 @@ public class Main {
 
 
 
-    public void Order(String nameEnter, String surnameEnter, String addressEnter, String phoneEnter, String dateEnter, String commentEnter){
-        setButtonCookie();
-        setButtonOrder();
+    public void order_draft(String nameEnter, String surnameEnter, String addressEnter, String phoneEnter, String dateEnter, String commentEnter){
         setName(nameEnter);
         setSurname(surnameEnter);
         setAddress(addressEnter);
@@ -169,27 +167,20 @@ public class Main {
         setDay();
         setScootercolor();
         setComment(commentEnter);
-        setButtonOrder2();
+        setButtonOrderFormAboutRent();
         setButtonyes();
     }
-    public void Order2(String nameEnter, String surnameEnter, String addressEnter, String phoneEnter, String dateEnter, String commentEnter){
+
+    public void orderInHeadder(String nameEnter, String surnameEnter, String addressEnter, String phoneEnter, String dateEnter, String commentEnter) {
         setButtonCookie();
-        setButtonOrder3();
-        setName(nameEnter);
-        setSurname(surnameEnter);
-        setAddress(addressEnter);
-        setMetro();
-        setMetro2();
-        setPhone(phoneEnter);
-        setButtonThen();
-        setDate(dateEnter);
-        setBlanckpole();
-        setRentalperiod();
-        setDay();
-        setScootercolor();
-        setComment(commentEnter);
-        setButtonOrder2();
-        setButtonyes();
+        setButtonOrder();
+        order_draft(nameEnter, surnameEnter, addressEnter, phoneEnter, dateEnter, commentEnter);
+    }
+
+    public void orderOnPage(String nameEnter, String surnameEnter, String addressEnter, String phoneEnter, String dateEnter, String commentEnter){
+        setButtonCookie();
+        setButtonOrderBellowPage();
+        order_draft(nameEnter, surnameEnter, addressEnter, phoneEnter, dateEnter, commentEnter);
     }
 
 
